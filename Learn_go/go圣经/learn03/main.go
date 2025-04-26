@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// 变量说明
 var n = flag.Bool("n", false, "省略末尾的换行符") //如果使用了 -n 标志，则不会在输出末尾添加换行符
 var sep = flag.String("s", " ", "分隔符")    //如果使用了 -s 标志，可以指定不同的分隔符
 
