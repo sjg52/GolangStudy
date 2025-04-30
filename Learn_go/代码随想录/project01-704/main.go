@@ -11,10 +11,12 @@ func search(nums []int, target int) int {
 		//取中间值，可能会存在溢出问题
 		middle := (left + right) / 2
 		if target > nums[middle] {
-			//如果大于中间值	往右查询
+			//如果大于中间值
+			//往右查询
 			left = middle + 1
 		} else if target < nums[middle] {
-			//如果小于中间值	往左查询
+			//如果小于中间值
+			//往左查询
 			right = middle - 1
 		} else {
 			//否则等于中间值
