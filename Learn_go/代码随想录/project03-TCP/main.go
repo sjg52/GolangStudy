@@ -5,6 +5,7 @@ import (
 	"net"
 )
 
+// main starts a TCP echo server that listens on localhost:8080 and handles incoming client connections.
 func main() {
 	// Listen for incoming connections
 	listener, err := net.Listen("tcp", "localhost:8080")
@@ -31,6 +32,7 @@ func main() {
 	}
 }
 
+// handleClient reads data from a TCP client connection and echoes it back to the client.
 func handleClient(conn net.Conn) {
 	// Ensure we close the connection after we're done
 	defer conn.Close()

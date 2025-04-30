@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//左闭右闭区间
+// search performs a binary search for target in a sorted slice of integers and returns its index, or -1 if not found.
 func search(nums []int, target int) int {
 	left := 0              //初始化左边界
 	right := len(nums) - 1 //初始化右边界

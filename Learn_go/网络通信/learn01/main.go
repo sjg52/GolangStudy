@@ -5,6 +5,7 @@ import (
 	"net"
 )
 
+// main starts a TCP server on localhost:8080 and continuously accepts and logs incoming connections.
 func main() {
 	fmt.Printf("准备开启服务器…………")
 	listener, err := net.Listen("tcp", "localhost:8080")
