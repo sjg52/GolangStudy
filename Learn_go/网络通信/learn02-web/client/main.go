@@ -26,7 +26,14 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	b, _ := io.ReadAll(resp.Body)
+	//b, _ := io.ReadAll(resp.Body)
+	defer resp.Body.Close()
+	b, err := io.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Println("Error reading response body:", err)
+		return
+	}
+
 	fmt.Printf("%v\n", string(b))
 
 }

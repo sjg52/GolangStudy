@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+var exitChan chan bool = make(chan bool, 1) // 声明并初始化了一个名为 exitChan 的通道
+
 func main() {
 	fmt.Printf("准备开启客户端…………")
 
@@ -22,8 +24,6 @@ func main() {
 	}
 }
 
-var exitChan chan bool = make(chan bool, 1) // 声明并初始化了一个名为 exitChan 的通道
-
 // 通过标准流进行数据传递
 func proc(conn net.Conn) {
 	// 最后执行关闭连接
@@ -33,6 +33,8 @@ func proc(conn net.Conn) {
 		line, err := reader.ReadString('\n') // 每次读取一行
 		if err != nil {
 			fmt.Println(err)
+			exitChan <- true
+			break
 		}
 		line = strings.Trim(line, "\r\n")
 		if line == "bye" {
@@ -44,6 +46,8 @@ func proc(conn net.Conn) {
 		len, err := conn.Write([]byte(line))
 		if err != nil {
 			fmt.Println(err)
+			exitChan <- true
+			break
 		}
 		fmt.Println("写入的字节数：", len)
 
